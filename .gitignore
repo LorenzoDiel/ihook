@@ -1,0 +1,12 @@
+# Ignorar DB y dependencias
+db.sqlite3
+
+# Ignorar package.json (root y subcarpetas)
+package.json
+package-lock.json
+**/package-lock.json
+*/package.json
+
+# Ignorar node_modules en cualquier nivel
+node_modules/
+**/node_modules/
