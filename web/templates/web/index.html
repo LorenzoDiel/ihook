@@ -1,0 +1,240 @@
+{% extends "web/base.html" %} {% load static %} {% block content %}
+<!-- Contenido específico de la página de inicio -->
+<!-- HERO -->
+<div class="container-responsive">
+  <section
+    id="inicio"
+    class="full-section d-flex flex-column align-items-center justify-content-center text-center"
+  >
+    <h1 class="title animate__animated animate__slideInLeft">
+      Somos iHook Estudio
+    </h1>
+    <h3 class="subtitle animate__animated animate__slideInRight">
+      Hacemos crecer tu negocio
+    </h3>
+    <a
+      type="button"
+      class="btn btn-ihook animate__animated animate__zoomInDown mt-3"
+      data-bs-toggle="modal"
+      data-bs-target="#contactoModal"
+    >
+      Contáctanos
+    </a>
+  </section>
+</div>
+<!-- Modal -->
+<div
+  class="modal fade"
+  id="contactoModal"
+  tabindex="-1"
+  aria-labelledby="contactoModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header justify-content-center">
+        <h1 class="modal-title fs-5" id="contactoModalLabel">Contáctanos</h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <form class="text-center">
+          <div class="mb-1">
+            <label for="nombre" class="form-label">Nombre</label>
+            <input type="text" class="form-control" id="nombre" required />
+          </div>
+          <div class="mb-1">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" class="form-control" id="email" required />
+          </div>
+          <div class="mb-1">
+            <label for="celular" class="form-label">Celular</label>
+            <input type="text" class="form-control" id="celular" required />
+          </div>
+          <div class="mb-1">
+            <label for="servicio" class="form-label">Servicio</label>
+            <select
+              class="form-select form-select-sm text-center"
+              aria-label="small select example"
+              aria-placeholder="Seleccione una opción"
+            >
+              <option selected value="Desarrollo Web">Desarrollo Web</option>
+              <option value="Pauta">Pauta Publicitaria - Meta Ads</option>
+              <option value="Redes">Gestión de Redes</option>
+              <option value="Branding">Branding</option>
+            </select>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button
+          type="button"
+          class="btn btn-primary"
+          data-bs-toggle="modal"
+          data-bs-target="#confirmacionModal"
+        >
+          Enviar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Modal Confirmación -->
+<div
+  class="modal fade"
+  id="confirmacionModal"
+  tabindex="-1"
+  aria-labelledby="confirmacionModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header justify-content-center">
+        <h1 class="modal-title fs-5" id="confirmacionModalLabel">
+          ¡Gracias por contactarnos!
+        </h1>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body text-center">
+        Hemos recibido tu mensaje y nos pondremos en contacto contigo pronto.
+      </div>
+      <div class="modal-footer justify-content-center">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SERVICIOS -->
+<div class="container-responsive">
+  <section
+    id="servicios"
+    class="full-section d-flex flex-column justify-content-center text-center"    
+  >
+  <h2 class="title">Servicios</h2>
+  <div id="serviciosCards" class="container d-flex flex-wrap justify-content-center">
+    <div class="row justify-content-center align-items-stretch g-4">
+      <div class="card col-xxl-4 col-xl-6" style="width: 18rem; height: 20rem;">
+        <img src="{% static 'web/img/redes.png' %}" class="card-img-top recolor" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Gestión de Redes</h5>
+          <p class="card-text">Nos encargamos de la gestión y optimización de tus redes sociales.</p>
+          <a href="#" class="btn btn-card align-bottom">Ver Mas</a>
+        </div>
+      </div>
+      <div class="card col-xxl-4 col-xl-6" style="width:  18rem; height: 20rem;">
+        <img src="{% static 'web/img/branding.png' %}" class="card-img-top recolor" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Branding</h5>
+          <p class="card-text">Diseñamos de comienzo a fin tu marca, te asesoramos y guiamos en lograr plasmar tu identidad en el mundo digital.</p>
+          <a href="#" class="btn btn-card align-bottom">Ver Mas</a>
+        </div>
+      </div>
+      <div class="card col-xxl-4 col-xl-6" style="width:  18rem; height: 20rem;">
+        <img src="{% static 'web/img/desarrollo.png' %}" class="card-img-top recolor" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Desarrollo Web</h5>
+          <p class="card-text">Creación de sitios web personalizados y optimizados.</p>
+          <a href="#" class="btn btn-card align-bottom">Ver Mas</a>
+        </div>
+      </div>
+      <div class="card col-xxl-4 col-xl-6" style="width:  18rem; height: 20rem;">
+        <img src="{% static 'web/img/ads.png' %}" class="card-img-top recolor" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">Meta Ads</h5>
+          <p class="card-text">Gestionamos tu pauta para optimizar y mejorar el rendimiento de tu inversión.</p>
+          <a href="#" class="btn btn-card align-bottom">Ver Mas</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  </section>
+</div>
+
+<!-- QUIENES SOMOS -->
+<div class="container-responsive">
+  <section
+    id="quienes-somos"
+    class="full-section d-flex flex-column justify-content-center text-center"
+  >
+    <div class="container">
+      <h2 class="title animate__animated animate__slideInLeft">
+        Quiénes Somos
+      </h2>
+      <p class="subtitle animate__animated animate__slideInRight">
+        En iHook, somos un equipo apasionado por el marketing digital y el
+        desarrollo web. Nuestra misión es ayudar a las empresas a prosperar
+        mediante soluciones innovadoras.
+      </p>
+    </div>
+  </section>
+</div>
+<!-- NUESTROS TRABAJOS -->
+<div class="container-responsive">
+  <section
+    id="nuestros-trabajos"
+    class="full-section d-flex flex-column justify-content-center text-center"
+  >
+    <div class="container">
+      <h2 class="text-primary mb-4">Nuestros Trabajos</h2>
+      <p>Próximamente...</p>
+    </div>
+  </section>
+</div>
+
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+(function() {
+  const INTERVAL_MS = 3000; // cada 5 segundos cambia la card
+  const carousel = document.getElementById('serviciosCarousel');
+  if (!carousel) return;
+
+  const radios = Array.from(
+    carousel.querySelectorAll('input[type="radio"][name="pages"]')
+  );
+  if (radios.length === 0) return;
+
+  function getActiveIndex() {
+    return radios.findIndex(r => r.checked);
+  }
+
+  function goToIndex(idx) {
+    if (radios[idx]) {
+      radios[idx].checked = true;
+    }
+  }
+
+  let timer = setInterval(() => {
+    const current = getActiveIndex();
+    const next = (current + 1) % radios.length;
+    goToIndex(next);
+  }, INTERVAL_MS);
+
+  // si la persona aprieta "Siguiente", reseteamos el timer
+  carousel.addEventListener('click', e => {
+    if (e.target.tagName.toLowerCase() === 'label') {
+      clearInterval(timer);
+      timer = setInterval(() => {
+        const current = getActiveIndex();
+        const next = (current + 1) % radios.length;
+        goToIndex(next);
+      }, INTERVAL_MS);
+    }
+  });
+})();
+</script>
+
+{% endblock %}
