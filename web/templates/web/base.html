@@ -27,8 +27,9 @@
 </head>
 <body>
     <!-- ======================== NAVBAR ======================== -->
+     <div class="nav-sensor"></div>
     <nav
-      class="navbar navbar-expand-lg fixed-top navbar-light bg-light shadow-sm"
+      class="navbar navbar-expand-xl fixed-top navbar-light shadow-sm"
     >
       <div class="container-fluid">
         <a href="#inicio" class="navbar-brand ms-2">
@@ -79,7 +80,7 @@
     <!-- FOOTER -->
     <footer
       id="contacto"
-      class="d-flex flex-column justify-content-center text-center bg-light mb-2"
+      class="d-flex flex-column justify-content-center text-center mb-2"
     >
       <div class="">
         <h2 class="title mb-3">Contáctanos</h2>
@@ -117,26 +118,17 @@
       target="_blank">
       <img src="{% static 'web/img/logo-whatsapp.png' %}" alt="Logo whatsapp" />
     </a>
-    <script>
-      (function () {
-        const btn = document.getElementById('whatsappFlotante');
-        const footer = document.getElementById('contacto');
-        if (!btn || !footer) return;
-
-        // Oculta el botón cuando el footer entra en el viewport
-        const io = new IntersectionObserver(
-          (entries) => {
-            entries.forEach((entry) => {
-              btn.style.display = entry.isIntersecting ? 'none' : '';
-            });
-          },
-          { threshold: 0 }
-        );
-
-        io.observe(footer);
-      })();
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
     {% block extra_scripts %}{% endblock %}
-</body>
+
+    <!-- Bootstrap bundle -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI"
+      crossorigin="anonymous"
+      defer
+    ></script>
+
+    <!-- JS propio -->
+    <script src="{% static 'web/js/scripts.js' %}" defer></script>
+  </body>
 </html>

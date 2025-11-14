@@ -10,3 +10,11 @@ package-lock.json
 # Ignorar node_modules en cualquier nivel
 node_modules/
 **/node_modules/
+
+# Ignorar archivos de entorno
+.env
+**/.env
+*.env
+.env.local
+.env.*.local
+

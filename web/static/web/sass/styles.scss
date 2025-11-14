@@ -1,24 +1,26 @@
-@charset "UTF-8";
 /* styles.scss */
+@use './__variables' as *;   // tus variables
+@use './__mixins' as *;      // tus mixins
+
 /* ———————————————————
    variables locales (opcional)
 ——————————————————— */
+$fondo-inicio: url("../img/fondo-laptop.jpg");
+$fondo-servicios: url("../img/fondo-arena.jpg");
+
 /* ———————————————————
    root y reset básico
 ——————————————————— */
 :root {
-  --nav-h: 72px;
-  --main-bg: url("../assets/fondo-blanco.jpeg");
+  --nav-h: #{$navbar-alto};
+  --main-bg: #{$imagen-fondo};
 }
 
 @media (max-width: 576px) {
-  :root {
-    --nav-h: 60px;
-  }
+  :root { --nav-h: #{$navbar-alto-mobile}; }
 }
-* {
-  box-sizing: border-box;
-}
+
+* { box-sizing: border-box; }
 
 /* ———————————————————
    fuentes
@@ -29,78 +31,67 @@
   font-weight: normal;
   font-style: normal;
 }
+
 /* ———————————————————
    html / body
 ——————————————————— */
 html, body {
-  font-family: "League Spartan", sans-serif;
+  font-family: $fuente-principal;
   font-weight: normal;
   font-style: normal;
-  color: #0e1947;
+  color: $color-3;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
-  background-image: url("../assets/fondo-blanco.jpeg");
+  background-image: $imagen-fondo; 
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   scroll-snap-type: y mandatory;
   scroll-padding-top: var(--nav-h);
   scroll-behavior: smooth;
-}
-@media (max-width: 576px) {
-  html, body {
-    scroll-snap-type: y proximity;
-  }
-}
-@media (prefers-reduced-motion: reduce) {
-  html, body {
-    scroll-snap-type: none;
-  }
+
+  @media (max-width: 576px)   { scroll-snap-type: y proximity; }
+  @media (prefers-reduced-motion: reduce) { scroll-snap-type: none; }
 }
 
 /* ———————————————————
    navbar
 ——————————————————— */
 .navbar {
-  position: fixed;
-  inset: 0 0 auto 0;
+  position: fixed; inset: 0 0 auto 0;
   z-index: 1000;
-  background-color: transparent !important;
-  -webkit-backdrop-filter: blur(8px);
-          backdrop-filter: blur(8px);
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-  border-radius: 0 0 20px 20px;
+  background-color: $navbar-fondo;
+  backdrop-filter: blur(8px);
+  box-shadow: $sombra-base;
+  border-radius: 0 0 $borde-radio $borde-radio;
   height: 86px;
-}
-.navbar .navbar-brand .logo {
-  width: 120px;
-  height: 80px;
-  border-radius: 20px;
-  transition: transform 0.3s ease;
-}
-.navbar .navbar-brand .logo:hover {
-  transform: scale(1.08);
-}
-.navbar .navbar-nav .nav-link {
-  font-family: "League Spartan", sans-serif;
-  font-weight: 500;
-  color: #0e1947;
-}
-.navbar .navbar-nav .nav-link:hover {
-  color: #1877f2;
+
+  .navbar-brand .logo {
+    width: 120px; height: 80px; border-radius: $borde-radio;
+    transition: transform .3s ease;
+
+    &:hover { transform: scale(1.08); }
+  }
+
+  .navbar-nav .nav-link {
+    font-family: $fuente-principal;
+    font-weight: 500;
+    color: $color-3;
+
+    &:hover { color: #1877f2; }
+  }
 }
 
 @media screen and (max-width: 1200px) {
   .navbar .navbar-brand .logo {
-    width: 100px;
-    height: 50px;
-    background-color: transparent !important;
+    width: 100px; height: 50px; background-color: $navbar-fondo-media;
   }
   .bg-light {
-    background-color: transparent !important;
+    background-color: $navbar-fondo-media;
   }
 }
+
 /* ———————————————————
    layout secciones
 ——————————————————— */
@@ -112,9 +103,8 @@ html, body {
   overflow: hidden;
   scroll-snap-align: start;
   scroll-snap-stop: always;
-}
-@media (max-width: 767px) {
-  .full-section {
+
+  @media (max-width: 767px) {
     padding: 60px 14px;
     border-radius: 16px;
   }
@@ -122,9 +112,8 @@ html, body {
 
 .container-responsive {
   margin-bottom: 8px;
-}
-@media (max-width: 767px) {
-  .container-responsive {
+
+  @media (max-width: 767px) {
     margin-left: 5px;
     margin-right: 5px;
   }
@@ -136,12 +125,12 @@ html, body {
 #inicio {
   margin-top: var(--nav-h);
   min-height: calc(100svh - var(--nav-h));
-  background: url("../img/fondo-laptop.jpg") center/cover no-repeat;
+  background: $fondo-inicio center / cover no-repeat;
 }
 
 #servicios {
   min-height: calc(100svh - var(--nav-h));
-  background: url("../img/fondo-arena.jpg") center/cover no-repeat;
+  background: $fondo-servicios center / cover no-repeat;
 }
 
 /* ———————————————————
@@ -150,16 +139,13 @@ html, body {
 .title {
   font-family: "relme", sans-serif;
   font-style: normal;
-  color: #0e1947;
+  color: $color-3;
   font-size: clamp(5rem, 5vw, 5rem);
 }
 
 .subtitle {
-  font-family: "League Spartan", sans-serif;
-  font-weight: bold;
-  font-style: italic;
-  color: #ff561a;
-  color: #6e20e6;
+  @include fuente-principal; // usa tu mixin
+  color: $color-2;
   font-size: clamp(2rem, 3vw, 3.5rem);
   margin-bottom: 1rem;
 }
@@ -169,26 +155,31 @@ html, body {
   font-weight: 700;
 }
 
-#servicios .title {
-  font-family: "League Spartan", sans-serif;
-  font-weight: 700;
-  font-style: oblique !important;
-  color: #0e1947 !important;
-  font-size: clamp(2rem, 3vw, 3.5rem);
-  margin-bottom: 1rem;
+#servicios {
+  .title {
+    font-family: $fuente-principal;
+    font-weight: 700;
+    font-style: oblique !important; // simulado (League Spartan no trae italic real)
+    color: $color-3 !important;
+    font-size: clamp(2rem, 3vw, 3.5rem);
+    margin-bottom: 1rem;
+  }
 }
 
-#quienes-somos .title {
-  font-family: "League Spartan", sans-serif;
-  font-weight: 500;
-  font-style: italic;
-  color: #6e20e6;
-}
-#quienes-somos .subtitle {
-  font-family: "League Spartan", sans-serif;
-  font-weight: 500;
-  font-style: normal;
-  color: #0e1947;
+#quienes-somos {
+  .title {
+    font-family: $fuente-principal;
+    font-weight: 500; // “medium”
+    font-style: italic; // simulado
+    color: $color-2;
+  }
+
+  .subtitle {
+    font-family: $fuente-principal;
+    font-weight: 500;
+    font-style: normal;
+    color: $color-3;
+  }
 }
 
 /* ———————————————————
@@ -197,25 +188,24 @@ html, body {
 footer {
   background-color: rgba(255, 255, 255, 0.95);
   color: #555;
-  font-size: 0.95rem;
+  font-size: .95rem;
 }
 
 /* ———————————————————
    botones
 ——————————————————— */
 .btn-ihook, .btn-card {
-  font-family: "League Spartan", sans-serif;
+  font-family: $fuente-principal;
   font-weight: 600;
-  color: #0e1947 !important;
-  background-color: rgb(255, 217, 198) !important;
+  color: $color-3 !important;
+  background-color: $color-5 !important;
   border: none;
-}
-.btn-ihook:hover, .btn-card:hover {
-  background-color: rgb(132, 104, 104) !important;
+
+  &:hover { background-color: rgb(132, 104, 104) !important; }
 }
 
 .btn-card {
-  margin-top: auto;
+  margin-top: auto; // empuja el botón al fondo
   align-self: center;
 }
 
@@ -224,63 +214,60 @@ footer {
 ——————————————————— */
 .whatsapp-flotante {
   position: fixed;
-  left: 40px;
-  bottom: 30px;
-  width: 80px;
-  height: 80px;
+  left: 40px; bottom: 30px;
+  width: 80px; height: 80px;
   align-items: center;
   background-color: #31e060;
   border-radius: 50px;
   z-index: 1000;
-}
-.whatsapp-flotante img {
-  margin: 10px 10px 5px;
-  width: 60px;
-  height: 60px;
+
+  img {
+    margin: 10px 10px 5px;
+    width: 60px; height: 60px;
+  }
 }
 
 /* ———————————————————
    cards
 ——————————————————— */
 .card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  display: flex; flex-direction: column; align-items: center;
   padding: 20px;
-  border: #0e1947 1px solid !important;
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.8) !important;
+  border: $color-3 1px solid !important;
+  box-shadow: 0 2px 10px rgba(0,0,0,.8) !important; // si querés usa $sombra-base
   border-radius: 15px !important;
   background-color: transparent !important;
   margin: 10px;
-}
-.card-body {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 auto;
-  align-items: center;
-  text-align: center;
-}
-.card-img-top {
-  width: 60px !important;
-  height: 60px !important;
-  border-radius: 5px;
-}
-.card-title {
-  font-family: "League Spartan", sans-serif;
-  font-weight: 500;
-  color: #0e1947;
-}
-.card-text {
-  flex: 1 1 auto;
-  margin-top: 10px;
-  font-family: "League Spartan", sans-serif;
-  font-weight: normal;
-  color: #0e1947;
+
+  &-body {
+    display: flex; flex-direction: column; flex: 1 1 auto;
+    align-items: center; text-align: center;
+  }
+
+  &-img-top {
+    width: 60px !important; height: 60px !important;
+    border-radius: 5px;
+  }
+
+  &-title {
+    font-family: $fuente-principal;
+    font-weight: 500;
+    color: $color-3;
+  }
+
+  &-text {
+    flex: 1 1 auto;
+    margin-top: 10px;
+    font-family: $fuente-principal;
+    font-weight: normal;
+    color: $color-3;
+  }
 }
 
 /* ———————————————————
    utilidades
 ——————————————————— */
 img.recolor {
+  // filtro ajustado al $color-3
   filter: invert(13%) sepia(32%) saturate(2210%) hue-rotate(208deg) brightness(92%) contrast(94%);
 }

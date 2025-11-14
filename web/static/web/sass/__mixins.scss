@@ -1,0 +1,28 @@
+@use './_variables' as *;
+
+@mixin fuente-principal {
+  font-family: $fuente-principal;
+  font-weight: bold;
+  font-style: italic;
+  color: $color-1;
+}
+
+@mixin fuente-secundaria {
+    font-family: $fuente-principal;
+    font-weight: medium;
+    font-style: italic;
+    color: $color-2;
+}
+
+@mixin fuente-terciaria {
+    font-family: $fuente-principal;
+    font-weight: normal;
+    font-style: normal;
+    color: $color-3;
+}
+
+@mixin separacion-bordes {
+    margin-left: 16px;
+    margin-right: 16px;
+    margin-bottom: 8px;
+}
