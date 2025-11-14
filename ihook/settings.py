@@ -120,7 +120,7 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")   # render servirá estos archivos
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "web", "static")]  # si ya tenés static en web/static
+STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]  # si ya tenés static en web/static
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
 
 
